@@ -17,7 +17,7 @@
     <inceptionYear>2017</inceptionYear>
 
     <properties>
-        <main-class>com.spring.cloud.Application</main-class>
+        <main-class>com.spring.cloud.eureka.Application</main-class>
     </properties>
 
     <dependencies>
