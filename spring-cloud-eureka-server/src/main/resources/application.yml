@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: @project.artifactId@
+  profiles:
+    active: @profiles.active@
+
+info:
+  app:
+    name: @project.artifactId@
+    description: @project.description@
+    version: @project.version@
+
+server:
+  port: @server.port@
+
+eureka:
+  instance:
+    hostname: ${spring.cloud.client.ipAddress}
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+  client:
+    serviceUrl:
+      defaultZone: @eureka.defaultZone@
+    register-with-eureka: false #是否注册自身到eureka服务器
+    fetch-registry: false #是否从eureka服务器获取注册信息
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+    enable-self-preservation: false #关闭自我保护
+
+logging:
+  file: logs/spring-cloud-eureka.log

@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: @project.artifactId@
+  profiles:
+    active: @profiles.active@
+
+info:
+  app:
+    name: @project.artifactId@
+    description: @project.description@
+    version: @project.version@
+
+server:
+  port: @server.port@
+
+logging:
+  file: logs/ifilmo-cloud-config.log
+
+---
+eureka:
+  client:
+    serviceUrl:
+          defaultZone: @eureka.defaultZone@
+  instance:
+    hostname: ${spring.cloud.client.ipAddress}
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+
+---
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: @config.git.url@
+          username: @config.git.username@
+          password: @config.git.password@
+          searchPaths: @config.git.searchPath@/{application}
+          timeout: 60
+

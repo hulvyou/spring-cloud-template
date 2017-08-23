@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.spring.cloud</groupId>
+    <artifactId>spring-cloud-template</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <name>Spring Cloud::spring-cloud-template</name>
+    <description>Aggregator For Spring Cloud Template Projects</description>
+    <inceptionYear>2017</inceptionYear>
+
+    <modules>
+
+        <module>spring-cloud-parent</module>
+        <module>spring-cloud-eureka-server</module>
+        <module>spring-cloud-zuul-server</module>
+        <module>spring-cloud-config-server</module>
+    </modules>
+</project>
