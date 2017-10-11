@@ -29,6 +29,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka</artifactId>
         </dependency>
+        <!--logback-->
         <dependency>
             <groupId>org.codehaus.janino</groupId>
             <artifactId>janino</artifactId>
@@ -98,12 +99,12 @@
                 <profiles.active>dev</profiles.active>
                 <docker.server>harbor-dev</docker.server>
                 <docker.repository>harbor.dev.com</docker.repository>
-                <server.port>8888</server.port>
+                <server.port>8771</server.port>
                 <config.git.url>https://github.com/hulvyou/spring-cloud-template.git</config.git.url>
-                <config.git.searchPath>spring-cloud-config</config.git.searchPath>
+                <config.git.searchPath>spring-cloud-config/${profiles.active}</config.git.searchPath>
                 <config.git.username></config.git.username>
                 <config.git.password></config.git.password>
-                <eureka.defaultZone>http://localhost:8761/eureka/</eureka.defaultZone>
+                <eureka.defaultZone>http://eureka.dev.com:8761/eureka/</eureka.defaultZone>
             </properties>
         </profile>
     </profiles>

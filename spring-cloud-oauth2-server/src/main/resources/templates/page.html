@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>info</title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>测试</h1>
+</body>
+<script>
+
+    $(window).on('unload', function () {
+        $.get("/pageInfo", function(result){});
+    });
+</script>
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>spring-cloud-parent</artifactId>
+        <groupId>com.spring.cloud</groupId>
+        <version>Dalston.SR-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>spring-cloud-example</artifactId>
+    <groupId>com.spring.cloud.example</groupId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <name>Spring Cloud Example::spring-cloud-example</name>
+    <inceptionYear>2017</inceptionYear>
+
+    <modules>
+        <module>spring-cloud-user-api</module>
+        <module>spring-cloud-user-server</module>
+        <module>spring-cloud-user-common</module>
+        <module>spring-cloud-user-web</module>
+    </modules>
+
+    <properties>
+        <swagger.version>2.7.0</swagger.version>
+        <lombok.version>1.16.14</lombok.version>
+        <mybatis.spring.boot.version>1.3.1</mybatis.spring.boot.version>
+        <mysql.version>5.1.38</mysql.version>
+        <pagehelper.version>5.1.1</pagehelper.version>
+
+    </properties>
+</project>

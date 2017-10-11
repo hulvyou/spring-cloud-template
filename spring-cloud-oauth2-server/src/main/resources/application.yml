@@ -1,0 +1,107 @@
+spring:
+  application:
+    name: @project.artifactId@
+  profiles:
+    active: @profiles.active@
+
+info:
+  app:
+    name: @project.artifactId@
+    description: @project.description@
+    version: @project.version@
+
+server:
+  port: @server.port@
+  session:
+    cookie:
+      name: spring-cloud-oauth2-server
+
+logging:
+  file: logs/spring-cloud-oauth2-server.log
+
+endpoints:
+  enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: true
+    time-to-live: 1000
+---
+spring:
+  redis:
+    database: 0
+    host: 47.89.42.150
+    port: 6379
+    password: ifilmoredispass
+
+---
+security:
+  basic:
+    enabled: false #关闭basic认证
+  management:
+    security:
+      enabled: false
+  oauth2:
+    resource:
+      token-info-uri: http://localhost:8088/oauth/check_token
+    client:
+      client-id: admin
+      client-secret: 123456
+
+
+---
+spring:
+  datasource:
+    url: jdbc:mysql://119.23.141.67:3306/oauth2?characterEncoding=UTF-8
+    username: root
+    password: NL55bybc3r6HpVyD
+    driver-class-name: com.mysql.jdbc.Driver
+    max-idle: 5
+    max-wait: 10000
+    min-idle: 2
+    initial-size: 3
+    validation-query: SELECT 1
+    time-between-eviction-runs-millis: 18800
+    jdbc-interceptors: ConnectionState;SlowQueryReport(threshold=50)
+
+---
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka.dev.com:8761/eureka/
+  instance:
+    hostname: ${spring.cloud.client.ipAddress}
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+
+---
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
+
+feign:
+  httpclient:
+    enabled: true
+  hystrix:
+   enabled: true
+
+---
+spring:
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 60000
+  OkToRetryOnAllOperations: true
+  MaxAutoRetriesNextServer: 4
+  MaxAutoRetries: 0
+
+---
+spring:
+  zipkin:
+    base-url: http://localhost:9411

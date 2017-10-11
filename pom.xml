@@ -18,5 +18,7 @@
         <module>spring-cloud-eureka-server</module>
         <module>spring-cloud-zuul-server</module>
         <module>spring-cloud-config-server</module>
+        <module>spring-cloud-oauth2-server</module>
+        <module>spring-cloud-example</module>
     </modules>
 </project>

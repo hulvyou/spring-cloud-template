@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.cloud.user.dao.UserMapper">
+    <resultMap id="userDetailsResultMap" type="com.spring.cloud.user.domain.UserDetailDO">
+        <result property="userId" column="userId"/>
+        <result property="username" column="username"/>
+        <result property="secret" column="secret"/>
+
+        <collection property="roleList" ofType="com.spring.cloud.user.domain.RoleDO">
+            <result column="roleId" property="roleId"/>
+            <result column="roleName" property="roleName"/>
+            <collection property="authorityList" ofType="com.spring.cloud.user.domain.AuthorityDO">
+                <result column="authorityId" property="authorityId"/>
+                <result column="parentId" property="parentId"/>
+                <result column="authorityName" property="authorityName"/>
+                <result column="authority" property="authority"/>
+                <result column="code" property="code"/>
+                <result column="level" property="level"/>
+                <result column="sort" property="sort"/>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <select id="queryUserDetailList" resultMap="userDetailsResultMap" parameterType="java.lang.String">
+        SELECT
+            u.id AS userId,
+            u.username,
+            u.secret,
+            r.id AS roleId,
+            r.`name` roleName,
+            a.id AS authorityId,
+            a.parent_id AS parentId,
+            a.`name` AS authorityName,
+            a.authority,
+            a.`code`,
+            a.`level`,
+            a.sort
+        FROM
+            t_user u
+        LEFT JOIN t_user_role ur ON u.id = ur.user_id
+        LEFT JOIN t_role r ON r.id = ur.role_id
+        LEFT JOIN t_role_authority ra ON ra.role_id = ur.role_id
+        LEFT JOIN t_authority a ON a.id = ra.authority_id
+        WHERE
+          u.username = #{username}
+    </select>
+</mapper>

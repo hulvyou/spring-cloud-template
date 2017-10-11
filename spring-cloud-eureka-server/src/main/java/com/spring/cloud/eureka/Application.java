@@ -12,17 +12,17 @@ import org.springframework.context.ConfigurableApplicationContext;
 @EnableEurekaServer
 public class Application implements DisposableBean {
 
-    private static final Logger logger = LoggerFactory.getLogger(Application.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
     private static ConfigurableApplicationContext ctx;
 
     public static void main(String[] args) throws Exception {
         ctx = SpringApplication.run(Application.class, args);
 
-        logger.info("spring.profiles.active:");
+        LOGGER.info("spring.profiles.active:");
         for (String str : ctx.getEnvironment().getActiveProfiles()) {
-            logger.info(str);
+            LOGGER.info(str);
         }
-        logger.info("Boot Server started.");
+        LOGGER.info("Boot Server started.");
     }
 
     @Override

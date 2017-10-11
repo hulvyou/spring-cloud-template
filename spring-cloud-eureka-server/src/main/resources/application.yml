@@ -28,4 +28,4 @@ eureka:
     enable-self-preservation: false #关闭自我保护
 
 logging:
-  file: logs/spring-cloud-eureka.log
+  file: logs/spring-cloud-eureka-server.log

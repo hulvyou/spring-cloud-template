@@ -1,0 +1,81 @@
+server:
+  port: @server.port@
+  tomcat:
+    uri-encoding: UTF-8
+  use-forward-headers: true
+---
+spring:
+  application:
+    name: @project.artifactId@
+  profiles:
+    active: @profiles.active@
+
+---
+info:
+  app:
+    name: @project.artifactId@
+    description: @project.description@
+    version: @project.version@
+
+---
+eureka:
+  client:
+    serviceUrl:
+          defaultZone: @eureka.defaultZone@
+  instance:
+    hostname: ${spring.cloud.client.ipAddress}
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+
+---
+zuul:
+  sensitive-headers: Cookie,Set-Cookie
+  host:
+    max-per-route-connections: 20
+    max-total-connections: 200
+    max-semaphores: 128
+  ignored-patterns: /**/actuator,/**/autoconfig,/**/beans,/**/configprops,/**/docs,/**/dump,/**/env,/**/flyway,/**/info,/**/liquibase,/**/logfile,/**/metrics,/**/mappings,/**/shutdown,/**/trace
+
+---
+# 单实例超时配置
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+
+# 负载均衡超时重试
+spring:
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 60000
+  OkToRetryOnAllOperations: true
+  MaxAutoRetriesNextServer: 4
+  MaxAutoRetries: 0
+
+---
+oauth2:
+  serverUrl: http://localhost:8088/oauth
+  clientId: zuul
+  secret: 123456
+  resourceId: zuul
+  apiUrls: /spring-cloud-user-server/**
+  scopes: spring-cloud-user-server.api
+
+security:
+  basic:
+    enabled: false
+management:
+  security:
+    enabled: false
+
+---
+logging:
+  file: logs/spring-cloud-zuul-server.log

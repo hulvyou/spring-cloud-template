@@ -14,7 +14,7 @@ server:
   port: @server.port@
 
 logging:
-  file: logs/ifilmo-cloud-config.log
+  file: logs/spring-cloud-config-server.log
 
 ---
 eureka:

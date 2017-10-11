@@ -8,3 +8,10 @@
 私服配置，常用插件配置；
 
 
+oauth2:
+  serverUrl: http://localhost:8088/oauth
+  clientId: userDetailDO
+  secret: 123456
+  apiUrls: /api/**
+  authorities: user.api
+
