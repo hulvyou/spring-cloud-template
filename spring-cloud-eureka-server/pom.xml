@@ -102,9 +102,9 @@
         <profile>
             <id>backup</id>
             <properties>
-                <profiles.active>test</profiles.active>
-                <docker.server>harbor-test</docker.server>
-                <docker.repository>harbor.test.com</docker.repository>
+                <profiles.active>dev</profiles.active>
+                <docker.server>harbor-dev</docker.server>
+                <docker.repository>harbor.dev.com</docker.repository>
                 <eureka.defaultZone>http://eureka.dev.com:8761/eureka/</eureka.defaultZone>
                 <server.port>8762</server.port>
             </properties>

@@ -52,9 +52,9 @@ security:
 ---
 spring:
   datasource:
-    url: jdbc:mysql://119.23.141.67:3306/oauth2?characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/oauth2?characterEncoding=UTF-8
     username: root
-    password: NL55bybc3r6HpVyD
+    password: 123456
     driver-class-name: com.mysql.jdbc.Driver
     max-idle: 5
     max-wait: 10000

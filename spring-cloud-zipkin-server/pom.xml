@@ -9,49 +9,57 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>spring-cloud-zuul-server</artifactId>
+    <artifactId>spring-cloud-zipkin-server</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>Spring Cloud::spring-cloud-zuul-server</name>
-    <description>spring-cloud-zuul-server</description>
+    <name>Spring Cloud::spring-cloud-zipkin-server</name>
+    <description>spring-cloud-zipkin-server</description>
     <inceptionYear>2017</inceptionYear>
 
     <properties>
-        <main-class>com.spring.cloud.zuul.Application</main-class>
+        <main-class>com.spring.cloud.zipkin.Application</main-class>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
     <dependencies>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zuul</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-client</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--zipkin依赖-->
+        <dependency>
+            <groupId>io.zipkin.java</groupId>
+            <artifactId>zipkin-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.zipkin.java</groupId>
+            <artifactId>zipkin-autoconfigure-storage-mysql</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.zipkin.java</groupId>
+            <artifactId>zipkin-autoconfigure-ui</artifactId>
         </dependency>
         <!--logback-->
         <dependency>
             <groupId>org.codehaus.janino</groupId>
             <artifactId>janino</artifactId>
             <version>${janino.version}</version>
-        </dependency>
-        <!--超时重试-->
-        <dependency>
-            <groupId>org.springframework.retry</groupId>
-            <artifactId>spring-retry</artifactId>
-        </dependency>
-        <!-- spring cloud security -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security.oauth</groupId>
-            <artifactId>spring-security-oauth2</artifactId>
         </dependency>
     </dependencies>
 
@@ -60,19 +68,11 @@
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <version>${docker.plugin.version}</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <version>0.4.11</version>
                 <configuration>
                     <serverId>${docker.server}</serverId>
                     <registryUrl>${docker.repository}</registryUrl>
-                    <imageName>${docker.repository}/${profiles.active}/${project.artifactId}:${project.version}</imageName>
+                    <imageName>${docker.repository}/ifilmo-${profiles.active}/${project.artifactId}:${project.version}</imageName>
                     <imageTags>
                         <imageTag>latest</imageTag>
                     </imageTags>
@@ -107,7 +107,6 @@
         </resources>
         <finalName>${project.artifactId}</finalName>
     </build>
-
     <profiles>
         <profile>
             <id>dev</id>
@@ -118,9 +117,13 @@
                 <profiles.active>dev</profiles.active>
                 <docker.server>harbor-dev</docker.server>
                 <docker.repository>harbor.dev.com</docker.repository>
-                <config.url>http://ifilmo.dev.com:8781/spring-cloud-config-server/</config.url>
-                <config.branch>master</config.branch>
+                <server.port>9411</server.port>
+                <jdbc.url>jdbc:mysql://localhost:3306/zipkin</jdbc.url>
+                <jdbc.username>root</jdbc.username>
+                <jdbc.password>123456</jdbc.password>
+                <eureka.defaultZone>http://ifilmo.dev.com:8761/eureka/,http://ifilmo.dev.com:8762/eureka/</eureka.defaultZone>
             </properties>
         </profile>
     </profiles>
+
 </project>

@@ -1,27 +1,13 @@
 server:
-  port: @server.port@
+  port: 8782
   tomcat:
     uri-encoding: UTF-8
   use-forward-headers: true
 ---
-spring:
-  application:
-    name: @project.artifactId@
-  profiles:
-    active: @profiles.active@
-
----
-info:
-  app:
-    name: @project.artifactId@
-    description: @project.description@
-    version: @project.version@
-
----
 eureka:
   client:
     serviceUrl:
-          defaultZone: @eureka.defaultZone@
+          defaultZone: http://eureka.dev.com:8761/eureka/
   instance:
     hostname: ${spring.cloud.client.ipAddress}
     prefer-ip-address: true

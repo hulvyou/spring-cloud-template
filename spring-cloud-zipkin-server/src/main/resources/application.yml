@@ -1,0 +1,58 @@
+---
+spring:
+  application:
+    name: @project.artifactId@
+  profiles:
+    active: @profiles.active@
+---
+info:
+  app:
+    name: @project.artifactId@
+    description: @project.description@
+    version: @project.version@
+  build:
+    artifact: @project.artifactId@
+    name: @project.name@
+    description: @project.description@
+    version: @project.version@
+---
+server:
+  port: @server.port@
+
+---
+zipkin:
+  storage:
+    type: mysql
+
+---
+spring:
+  datasource:
+    url: @jdbc.url@?useUnicode=true&characterEncoding=utf-8
+    username: @jdbc.username@
+    password: @jdbc.password@
+    default-auto-commit: true
+    initial-size: 2
+    max-active: 20
+    min-idle: 1
+    max-idle: 10
+    max-wait: 60000
+    time-between-eviction-runs-millis: 3000
+    min-evictable-idle-time-millis: 300000
+    validation-query: select 1
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    remove-abandoned: true
+    remove-abandoned-timeout: 180
+    connection-properties: clientEncoding=UTF-8
+
+---
+eureka:
+  client:
+    serviceUrl:
+          defaultZone: @eureka.defaultZone@
+  instance:
+    hostname: ${spring.cloud.client.ipAddress}
+    prefer-ip-address: true

@@ -14,9 +14,9 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://119.23.141.67:3306/user?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://localhost:3306/user?useUnicode=true&characterEncoding=utf-8
     username: root
-    password: NL55bybc3r6HpVyD
+    password: 123456
     # 下面为连接池的补充设置，应用到上面所有数据源中
     # 初始化大小，最小，最大
     initialSize: 5

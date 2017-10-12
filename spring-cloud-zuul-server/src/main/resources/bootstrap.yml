@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: @project.artifactId@
+  profiles:
+    active: @profiles.active@
+
+info:
+  app:
+    name: @project.artifactId@
+    description: @project.description@
+    version: @project.version@
+
+---
+spring:
+  cloud:
+    config:
+      uri: @config.url@
+      name: @project.artifactId@
+      profile: @profiles.active@
+      label: @config.branch@
