@@ -6,7 +6,13 @@ package com.spring.cloud.user.enumerate;
  * @author Travel Hu
  */
 public enum EnumUserType {
+    /**
+     * 普通用户
+     */
     GENERAL_USER(1,"普通用户"),
+    /**
+     * 高级用户
+     */
     ADVANCED_USER(2,"高级用户");
 
 

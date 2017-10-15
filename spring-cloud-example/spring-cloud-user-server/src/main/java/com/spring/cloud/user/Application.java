@@ -8,6 +8,11 @@ import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.ConfigurableApplicationContext;
 
+/**
+ * 启动类
+ *
+ * @author Travel Hu
+ */
 @SpringCloudApplication
 @EnableFeignClients(basePackages = {"com.spring.cloud"})
 public class Application implements DisposableBean {

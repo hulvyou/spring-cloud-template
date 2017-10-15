@@ -14,6 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @FeignClient(name = "spring-cloud-user-server",url = "http://localhost:8080")
 @RequestMapping("/api")
 public interface UserService {
+
+    /**
+     * 通过用户名获取用户信息
+     * @param username
+     * @return
+     */
     @GetMapping("/v1/users/{username}")
     UserDetailDTO findUserByUsername(@PathVariable("username") String username);
 }

@@ -1,6 +1,6 @@
 package com.spring.cloud.oauth2.config;
 
-import com.spring.cloud.oauth2.service.CustomUserService;
+import com.spring.cloud.oauth2.service.CustomUserServiceImpl;
 import com.spring.cloud.user.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -20,8 +20,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class OAuthWebConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private CustomUserService customUserService;
+    private CustomUserServiceImpl customUserServiceImpl;
 
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .anyRequest().authenticated()
@@ -38,7 +39,7 @@ public class OAuthWebConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(customUserService).passwordEncoder(new PasswordEncoder(){
+        auth.userDetailsService(customUserServiceImpl).passwordEncoder(new PasswordEncoder(){
 
             @Override
             public String encode(CharSequence rawPassword) {

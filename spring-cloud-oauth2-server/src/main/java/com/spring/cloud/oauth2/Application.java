@@ -11,6 +11,11 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+/**
+ * 启动类
+ *
+ * @author Travel Hu
+ */
 @SpringCloudApplication
 @EnableFeignClients(basePackages = {"com.spring.cloud"})
 @EnableAuthorizationServer

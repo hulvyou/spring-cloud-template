@@ -30,6 +30,10 @@
             <artifactId>spring-cloud-starter-eureka</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-client</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
@@ -107,6 +111,7 @@
         </resources>
         <finalName>${project.artifactId}</finalName>
     </build>
+
     <profiles>
         <profile>
             <id>dev</id>
@@ -117,13 +122,9 @@
                 <profiles.active>dev</profiles.active>
                 <docker.server>harbor-dev</docker.server>
                 <docker.repository>harbor.dev.com</docker.repository>
-                <server.port>9411</server.port>
-                <jdbc.url>jdbc:mysql://localhost:3306/zipkin</jdbc.url>
-                <jdbc.username>root</jdbc.username>
-                <jdbc.password>123456</jdbc.password>
-                <eureka.defaultZone>http://ifilmo.dev.com:8761/eureka/,http://ifilmo.dev.com:8762/eureka/</eureka.defaultZone>
+                <config.url>http://zuul.dev.com:8781/spring-cloud-config-server</config.url>
+                <config.branch>master</config.branch>
             </properties>
         </profile>
     </profiles>
-
 </project>

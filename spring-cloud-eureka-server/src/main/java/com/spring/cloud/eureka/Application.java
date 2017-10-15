@@ -8,6 +8,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 import org.springframework.context.ConfigurableApplicationContext;
 
+/**
+ * 启动类
+ *
+ * @author Travel Hu
+ */
 @SpringBootApplication
 @EnableEurekaServer
 public class Application implements DisposableBean {

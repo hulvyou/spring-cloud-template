@@ -9,6 +9,11 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.ConfigurableApplicationContext;
 import zipkin.server.EnableZipkinServer;
 
+/**
+ * 启动类
+ *
+ * @author Travel Hu
+ */
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableZipkinServer

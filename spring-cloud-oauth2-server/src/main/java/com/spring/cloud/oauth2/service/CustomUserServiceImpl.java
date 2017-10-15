@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
  * @author Travel Hu
  */
 @Service
-public class CustomUserService implements UserDetailsService {
+public class CustomUserServiceImpl implements UserDetailsService {
     @Autowired
     private UserService userService;
 

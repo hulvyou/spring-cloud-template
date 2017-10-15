@@ -83,4 +83,14 @@ public class UserDetailDO implements UserDetails {
     public void setRoleList(List<RoleDTO> roleList) {
         this.roleList = roleList;
     }
+
+    @Override
+    public String toString() {
+        return "UserDetailDO{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", roleList=" + roleList +
+                '}';
+    }
 }

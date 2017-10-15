@@ -1,23 +1,5 @@
----
-spring:
-  application:
-    name: @project.artifactId@
-  profiles:
-    active: @profiles.active@
----
-info:
-  app:
-    name: @project.artifactId@
-    description: @project.description@
-    version: @project.version@
-  build:
-    artifact: @project.artifactId@
-    name: @project.name@
-    description: @project.description@
-    version: @project.version@
----
 server:
-  port: @server.port@
+  port: 9411
 
 ---
 zipkin:
@@ -27,9 +9,9 @@ zipkin:
 ---
 spring:
   datasource:
-    url: @jdbc.url@?useUnicode=true&characterEncoding=utf-8
-    username: @jdbc.username@
-    password: @jdbc.password@
+    url: jdbc:mysql://localhost:3306/zipkin?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
     default-auto-commit: true
     initial-size: 2
     max-active: 20
@@ -52,7 +34,8 @@ spring:
 eureka:
   client:
     serviceUrl:
-          defaultZone: @eureka.defaultZone@
+          defaultZone: http://eureka.dev.com:8761/eureka/
   instance:
     hostname: ${spring.cloud.client.ipAddress}
     prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}

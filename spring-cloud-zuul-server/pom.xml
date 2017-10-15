@@ -118,7 +118,7 @@
                 <profiles.active>dev</profiles.active>
                 <docker.server>harbor-dev</docker.server>
                 <docker.repository>harbor.dev.com</docker.repository>
-                <config.url>http://ifilmo.dev.com:8781/spring-cloud-config-server/</config.url>
+                <config.url>http://zuul.dev.com:8781/spring-cloud-config-server</config.url>
                 <config.branch>master</config.branch>
             </properties>
         </profile>

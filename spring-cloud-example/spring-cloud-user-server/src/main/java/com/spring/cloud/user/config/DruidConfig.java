@@ -35,7 +35,7 @@ public class DruidConfig {
      * @return
      */
     @Bean
-    public ServletRegistrationBean DruidStatViewServlet(){
+    public ServletRegistrationBean druidStatViewServlet(){
         //注册监控地址
         ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new StatViewServlet(),"/druid/*");
 

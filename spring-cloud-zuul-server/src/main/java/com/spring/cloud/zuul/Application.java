@@ -11,6 +11,11 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
+/**
+ * 启动类
+ *
+ * @author Travel Hu
+ */
 @EnableZuulProxy
 @SpringBootApplication
 @EnableDiscoveryClient

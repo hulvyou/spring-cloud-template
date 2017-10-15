@@ -51,7 +51,7 @@ public class OAuth2ServerConfig extends AuthorizationServerConfigurerAdapter {
                 .tokenStore(tokenStore());
         //endpoints.tokenStore(new RedisTokenStore(redisConnectionFactory));
 
-        // 配置TokenServices参数
+        //配置TokenServices参数
         DefaultTokenServices tokenServices = new DefaultTokenServices();
         tokenServices.setTokenStore(endpoints.getTokenStore());
         tokenServices.setSupportRefreshToken(false);

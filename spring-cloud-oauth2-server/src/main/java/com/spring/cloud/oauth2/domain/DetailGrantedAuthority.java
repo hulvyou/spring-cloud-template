@@ -20,10 +20,12 @@ public class DetailGrantedAuthority implements GrantedAuthority {
         this.authority = authority;
     }
 
+    @Override
     public String getAuthority() {
         return authority;
     }
 
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -36,10 +38,12 @@ public class DetailGrantedAuthority implements GrantedAuthority {
         return false;
     }
 
+    @Override
     public int hashCode() {
         return this.authority.hashCode();
     }
 
+    @Override
     public String toString() {
         return this.authority;
     }

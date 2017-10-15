@@ -9,6 +9,11 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.config.server.EnableConfigServer;
 import org.springframework.context.ConfigurableApplicationContext;
 
+/**
+ * 启动类
+ *
+ * @author Travel Hu
+ */
 @SpringBootApplication
 @EnableConfigServer
 @EnableDiscoveryClient
