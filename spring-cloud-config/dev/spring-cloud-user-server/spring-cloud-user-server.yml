@@ -112,3 +112,12 @@ spring:
       kafka:
         binder:
           zk-nodes: 47.90.2.202:2181
+          auto-add-partitions: true
+          auto-create-topics: true
+          min-partition-count: 1
+      bindings:
+        output:
+          destination: zipkin
+          content-type: text/plain
+          producer:
+            partitionCount: 1
