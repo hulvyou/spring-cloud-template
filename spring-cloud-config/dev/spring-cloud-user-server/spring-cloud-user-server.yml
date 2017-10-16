@@ -109,10 +109,6 @@ logging:
 spring:
   cloud:
     stream:
-      bindings:
-        sleuth:
-          consumer:
-            concurrency: 3
       kafka:
         binder:
           zk-nodes: 127.0.0.1:2181
