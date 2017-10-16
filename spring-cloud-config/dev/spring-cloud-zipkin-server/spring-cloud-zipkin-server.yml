@@ -47,11 +47,11 @@ spring:
     stream:
       kafka:
         binder:
-          brokers: 47.90.2.202:9092
+          #brokers: 47.90.2.202:9092
           zk-nodes: 47.90.2.202:2181
           auto-add-partitions: true
           auto-create-topics: true
-          min-partition-count: 1
+          min-partition-count: 3
       bindings:
         input:
           destination: zipkin
