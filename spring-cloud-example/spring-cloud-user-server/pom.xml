@@ -90,6 +90,10 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zipkin</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-stream-kafka</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -151,13 +155,11 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <config.url>http://ifilmo.dev.com:8781/spring-cloud-config-server/</config.url>
-                <config.branch>master</config.branch>
                 <profiles.active>dev</profiles.active>
                 <docker.server>harbor-dev</docker.server>
                 <docker.repository>harbor.dev.com</docker.repository>
-                <server.port>8080</server.port>
-                <eureka.defaultZone>http://localhost:8761/eureka/</eureka.defaultZone>
+                <config.url>http://zuul.dev.com:8781/spring-cloud-config-server</config.url>
+                <config.branch>master</config.branch>
             </properties>
         </profile>
     </profiles>

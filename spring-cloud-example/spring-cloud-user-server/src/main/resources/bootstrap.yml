@@ -11,11 +11,10 @@ info:
     version: @project.version@
 
 ---
-#spring:
-#  cloud:
-#    config:
-#      uri: @config.url@
-#      name: @project.artifactId@
-#      profile: @profiles.active@
-#      label: @config.branch@
----
+spring:
+  cloud:
+    config:
+      uri: @config.url@
+      name: @project.artifactId@
+      profile: @profiles.active@
+      label: @config.branch@

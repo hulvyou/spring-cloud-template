@@ -17,3 +17,17 @@ spring:
       name: @project.artifactId@
       profile: @profiles.active@
       label: @config.branch@
+
+---
+#spring:
+#  sleuth:
+#    sampler:
+#      percentage: 0.1 #服务抽样上报到kafka的百分比,默认0.1
+#  cloud:
+#    stream:
+#      kafka:
+#        binder:
+#          zk-nodes: 127.0.0.1:2181 #kafka使用的zookeeper地址,多个以逗号隔开
+#          brokers: 127.0.0.1:9092 #kafka集群brokers,多个以逗号隔开
+#          min-partition-count: 3 #最小partition数量
+#          replication-factor: 2 #每个partition的复制集数量

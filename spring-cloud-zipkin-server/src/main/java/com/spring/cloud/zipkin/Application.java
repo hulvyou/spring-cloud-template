@@ -6,8 +6,8 @@ import org.springframework.beans.factory.DisposableBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.sleuth.zipkin.stream.EnableZipkinStreamServer;
 import org.springframework.context.ConfigurableApplicationContext;
-import zipkin.server.EnableZipkinServer;
 
 /**
  * 启动类
@@ -16,7 +16,7 @@ import zipkin.server.EnableZipkinServer;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableZipkinServer
+@EnableZipkinStreamServer
 public class Application implements DisposableBean {
 
     private static final Logger logger = LoggerFactory.getLogger(Application.class);
