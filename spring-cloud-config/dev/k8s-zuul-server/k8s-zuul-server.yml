@@ -48,9 +48,9 @@ management:
 ---
 zuul:
   routes:
-    api-app-a:
+    app-a:
       path: /api/v1/**
-      url: http://www.baidu.com
-    api-app-b:
+      url: http://localhost:8801
+    app-b:
       path: /api/v1/**
-      url: http://www.qq.com
+      url: http://localhost:8802
