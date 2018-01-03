@@ -50,7 +50,7 @@ zuul:
   routes:
     app-a:
       path: /app-a/**
-      url: http://localhost:8801
+      url: http://app-a:8801
     app-b:
       path: /app-b/**
-      url: http://localhost:8802
+      url: http://app-b:8802
