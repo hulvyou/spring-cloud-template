@@ -5,7 +5,7 @@
     >2. Zuul 服务网关
     >3. Config 分布式配置
     >4. Oauth2 鉴权服务
-    >5. 
+    >5. Zipkin 分布式服务追踪
 ## 项目介绍
 > 1. spring-cloud-parent是一个父pom工程 version定义为SNAPSHOT便于后续升级，里面定义了spring cloud版本，properties定义
 私服配置，常用插件配置；

@@ -30,4 +30,7 @@ public class UserDetailDTO implements Serializable{
 
     @ApiModelProperty(value = "角色列表", dataType = "List")
     private List<RoleDTO> roleList;
+
+    @ApiModelProperty(value = "是否熔断", dataType = "Boolean")
+    private Boolean isFallback = false;
 }

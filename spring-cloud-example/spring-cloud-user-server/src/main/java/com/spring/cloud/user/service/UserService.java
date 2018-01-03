@@ -15,7 +15,13 @@ public class UserService {
     @Autowired
     private UserMapper userMapper;
 
-    public UserDetailDO queryUserDetailList(String username) {
-        return userMapper.queryUserDetailList(username);
+    /**
+     * 查询用户详情
+     *
+     * @param username
+     * @return
+     */
+    public UserDetailDO queryUserDetail(String username) {
+        return userMapper.queryUserDetail(username);
     }
 }

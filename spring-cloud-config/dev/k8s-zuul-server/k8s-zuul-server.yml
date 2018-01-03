@@ -1,0 +1,50 @@
+server:
+  port: 8781
+  tomcat:
+    uri-encoding: UTF-8
+  use-forward-headers: true
+---
+zuul:
+  sensitive-headers: Cookie,Set-Cookie
+  host:
+    max-per-route-connections: 20
+    max-total-connections: 200
+    max-semaphores: 128
+  ignored-patterns: /**/actuator,/**/autoconfig,/**/beans,/**/configprops,/**/docs,/**/dump,/**/env,/**/flyway,/**/info,/**/liquibase,/**/logfile,/**/metrics,/**/mappings,/**/shutdown,/**/trace
+
+---
+# 单实例超时配置
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+
+# 负载均衡超时重试
+spring:
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 60000
+  OkToRetryOnAllOperations: true
+  MaxAutoRetriesNextServer: 4
+  MaxAutoRetries: 0
+---
+logging:
+  file: logs/spring-cloud-zuul-server.log
+
+---
+zuul:
+  routes:
+    api-app-a:
+      path: /api/v1/**
+      url: http://www.baidu.com
+    api-app-b:
+      path: /api/v1/**
+      url: http://www.qq.com

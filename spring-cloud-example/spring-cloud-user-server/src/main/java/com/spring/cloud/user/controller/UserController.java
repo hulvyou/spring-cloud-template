@@ -1,5 +1,6 @@
 package com.spring.cloud.user.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.spring.cloud.user.domain.UserDetailDO;
 import com.spring.cloud.user.dto.UserDetailDTO;
 import com.spring.cloud.user.service.UserService;
@@ -31,12 +32,21 @@ public class UserController {
 
     @GetMapping(value = "/v1/users/{username}")
     @ApiOperation(value = "获取用户详情信息", httpMethod = "GET", response = UserDetailDTO.class, notes = "获取用户详情信息")
-    public UserDetailDTO queryUserDetailList(@ApiParam(required = true, name = "username", value = "用户名") @PathVariable("username") String username) {
+    @HystrixCommand(fallbackMethod = "queryUserDetailFallback")
+    public UserDetailDTO queryUserDetail(@ApiParam(required = true, name = "username", value = "用户名") @PathVariable("username") String username) {
         LOGGER.info("获取用户详情信息 username:{}", username);
-        UserDetailDO userDetailDO = userService.queryUserDetailList(username);
+        UserDetailDO userDetailDO = userService.queryUserDetail(username);
 
         UserDetailDTO userDetailDTO = new UserDetailDTO();
         BeanUtils.copyProperties(userDetailDO, userDetailDTO);
         return userDetailDTO;
+    }
+
+
+    private UserDetailDTO queryUserDetailFallback(String username) {
+        UserDetailDTO userDetail = new UserDetailDTO();
+        userDetail.setUsername(username);
+        userDetail.setIsFallback(true);
+        return userDetail;
     }
 }

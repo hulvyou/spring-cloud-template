@@ -9,9 +9,9 @@
     </appender>
 
     <appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>logs/spring-cloud-userDetailDO-server.log</file>
+        <file>logs/spring-cloud-user-server.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>logs/spring-cloud-userDetailDO-server.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>logs/spring-cloud-user-server.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
         <encoder charset="UTF-8">
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{80} - %msg%n</pattern>

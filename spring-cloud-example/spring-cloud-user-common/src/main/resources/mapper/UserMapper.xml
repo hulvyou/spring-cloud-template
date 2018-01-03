@@ -21,7 +21,16 @@
         </collection>
     </resultMap>
 
-    <select id="queryUserDetailList" resultMap="userDetailsResultMap" parameterType="java.lang.String">
+    <resultMap id="userResultMap" type="com.spring.cloud.user.domain.UserDO">
+        <id property="id" column="id"></id>
+        <result property="username" column="username"/>
+        <result property="secret" column="secret"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <select id="queryUserDetail" resultMap="userDetailsResultMap" parameterType="java.lang.String">
         SELECT
             u.id AS userId,
             u.username,
@@ -43,5 +52,40 @@
         LEFT JOIN t_authority a ON a.id = ra.authority_id
         WHERE
           u.username = #{username}
+    </select>
+
+    <insert id="addUser" parameterType="UserDO" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO t_user(username,secret,is_delete,create_time,update_time)
+        VALUES (#{username},#{secret},#{is_delete},#{create_time},#{update_time})
+    </insert>
+
+    <delete id="deleteUser" parameterType="java.lang.Long">
+        DELETE FROM t_user WHERE id=#{id}
+    </delete>
+
+    <update id="updateUser" parameterType="UserDO">
+        UPDATE t_user
+        <set>
+            <if test="username != null">
+                username = #{username},
+            </if>
+            <if test="secret != null">
+                secret = #{secret},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+        </set>
+    </update>
+
+    <select id="queryById" resultMap="userResultMap" parameterType="java.lang.Long">
+        SELECT * FROM t_user WHERE id = #{id}
+    </select>
+
+    <select id="queryUserList" resultMap="userResultMap">
+        SELECT * FROM t_user
     </select>
 </mapper>
