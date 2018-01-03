@@ -49,8 +49,8 @@ management:
 zuul:
   routes:
     app-a:
-      path: /app-a/**
+      path: /app-server-a/**
       url: http://localhost:8801
     app-b:
-      path: /app-b/**
+      path: /app-server-b/**
       url: http://localhost:8802
