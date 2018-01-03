@@ -38,7 +38,13 @@ ribbon:
 ---
 logging:
   file: logs/spring-cloud-zuul-server.log
-
+---
+security:
+  basic:
+    enabled: false
+management:
+  security:
+    enabled: false
 ---
 zuul:
   routes:
