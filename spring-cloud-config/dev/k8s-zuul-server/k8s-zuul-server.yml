@@ -10,7 +10,7 @@ zuul:
     max-per-route-connections: 20
     max-total-connections: 200
     max-semaphores: 128
-  ignored-patterns: /**/actuator,/**/autoconfig,/**/beans,/**/configprops,/**/docs,/**/dump,/**/env,/**/flyway,/**/info,/**/liquibase,/**/logfile,/**/metrics,/**/mappings,/**/shutdown,/**/trace
+  ignored-patterns: /**/actuator,/**/autoconfig,/**/beans,/**/configprops,/**/docs,/**/dump,/**/env,/**/flyway,/**/liquibase,/**/logfile,/**/metrics,/**/mappings,/**/shutdown,/**/trace
 
 ---
 # 单实例超时配置
@@ -49,8 +49,9 @@ management:
 zuul:
   routes:
     app-a:
-      path: /server-app-a/**
+      path: /app-a/**
       url: http://localhost:8801
+      stripPrefix:
     app-b:
-      path: /server-app-b/**
+      path: /app-b/**
       url: http://localhost:8802
