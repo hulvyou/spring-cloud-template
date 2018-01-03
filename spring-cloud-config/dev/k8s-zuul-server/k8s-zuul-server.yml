@@ -51,7 +51,6 @@ zuul:
     app-a:
       path: /app-a/**
       url: http://localhost:8801
-      stripPrefix:
     app-b:
       path: /app-b/**
       url: http://localhost:8802
