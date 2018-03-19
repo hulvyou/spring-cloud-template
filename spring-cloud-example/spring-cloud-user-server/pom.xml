@@ -16,7 +16,7 @@
     <inceptionYear>2017</inceptionYear>
 
     <properties>
-        <main-class>com.spring.cloud.user.Application</main-class>
+        <main-class>Application</main-class>
     </properties>
 
     <dependencies>
@@ -24,12 +24,12 @@
         <dependency>
             <groupId>com.spring.cloud.example</groupId>
             <artifactId>spring-cloud-user-api</artifactId>
-            <version>1.0.0</version>
+            <version>${user.api.version}</version>
         </dependency>
         <dependency>
             <groupId>com.spring.cloud.example</groupId>
             <artifactId>spring-cloud-user-common</artifactId>
-            <version>1.0.0</version>
+            <version>${user.common.version}</version>
         </dependency>
         <!-- spring boot -->
         <dependency>
@@ -94,6 +94,18 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-stream-kafka</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -102,21 +114,10 @@
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>${docker.plugin.version}</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                    </execution>
-                </executions>
                 <configuration>
                     <serverId>${docker.server}</serverId>
                     <registryUrl>${docker.repository}</registryUrl>
                     <imageName>${docker.repository}/${profiles.active}/${project.artifactId}:${project.version}</imageName>
-                    <imageTags>
-                        <imageTag>latest</imageTag>
-                    </imageTags>
                     <dockerDirectory>src/main/docker</dockerDirectory>
                     <resources>
                         <resource>
@@ -159,6 +160,16 @@
                 <docker.server>harbor-dev</docker.server>
                 <docker.repository>harbor.dev.com</docker.repository>
                 <config.url>http://zuul.dev.com:8781/spring-cloud-config-server</config.url>
+                <config.branch>master</config.branch>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <profiles.active>test</profiles.active>
+                <docker.server>harbor-test</docker.server>
+                <docker.repository>harbor.test.com</docker.repository>
+                <config.url>http://zuul.test.com:8781/spring-cloud-config-server</config.url>
                 <config.branch>master</config.branch>
             </properties>
         </profile>

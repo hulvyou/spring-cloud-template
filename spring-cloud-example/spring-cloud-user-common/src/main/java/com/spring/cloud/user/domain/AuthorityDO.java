@@ -7,11 +7,7 @@ import lombok.*;
  *
  * @author Travel Hu
  */
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class AuthorityDO {
     /**
      * 权限ID

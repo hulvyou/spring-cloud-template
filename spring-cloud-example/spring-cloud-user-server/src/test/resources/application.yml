@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: root
+    password: 123456
+---
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.spring.cloud.user.domain
+  configuration:
+    map-underscore-to-camel-case: true
+    use-generated-keys: true
+---
+# 单实例超时配置
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeout-in-milliseconds: 15000
+
+# 负载均衡超时重试
+spring:
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 60000
+  OkToRetryOnAllOperations: true
+  MaxAutoRetriesNextServer: 4
+  MaxAutoRetries: 0

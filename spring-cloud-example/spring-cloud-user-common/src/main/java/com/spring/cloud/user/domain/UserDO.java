@@ -9,11 +9,7 @@ import java.util.Date;
  *
  * @author Travel Hu
  */
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class UserDO {
     /**
      * 用户ID

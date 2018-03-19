@@ -16,7 +16,7 @@
     <inceptionYear>2017</inceptionYear>
 
     <properties>
-        <main-class>com.spring.cloud.user.Application</main-class>
+        <main-class>Application</main-class>
     </properties>
 
     <dependencies>
@@ -48,36 +48,6 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>${docker.plugin.version}</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <serverId>${docker.server}</serverId>
-                    <registryUrl>${docker.repository}</registryUrl>
-                    <imageName>${docker.repository}/${profiles.active}/${project.artifactId}:${project.version}</imageName>
-                    <imageTags>
-                        <imageTag>latest</imageTag>
-                    </imageTags>
-                    <dockerDirectory>src/main/docker</dockerDirectory>
-                    <resources>
-                        <resource>
-                            <targetPath>/</targetPath>
-                            <directory>${project.build.directory}</directory>
-                            <include>${project.build.finalName}.jar</include>
-                        </resource>
-                    </resources>
-                    <forceTags>true</forceTags>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

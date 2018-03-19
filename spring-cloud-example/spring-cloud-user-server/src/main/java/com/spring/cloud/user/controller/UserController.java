@@ -1,9 +1,9 @@
 package com.spring.cloud.user.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.spring.cloud.user.service.UserService;
 import com.spring.cloud.user.domain.UserDetailDO;
 import com.spring.cloud.user.dto.UserDetailDTO;
-import com.spring.cloud.user.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

@@ -1,0 +1,1 @@
+INSERT INTO t_user ( username,secret,is_delete,create_time,update_time) VALUES ( 'admin','123456',0, '2018-01-01 15:32:25','2018-01-01 15:32:25');

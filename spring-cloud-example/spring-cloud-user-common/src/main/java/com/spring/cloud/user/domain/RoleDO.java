@@ -9,11 +9,7 @@ import java.util.List;
  *
  * @author Travel Hu
  */
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class RoleDO{
 
     /**
