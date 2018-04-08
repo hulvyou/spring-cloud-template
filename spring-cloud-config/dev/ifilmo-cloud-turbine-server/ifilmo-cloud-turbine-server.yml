@@ -1,0 +1,45 @@
+server:
+  port: 8071
+  tomcat:
+    uri-encoding: UTF-8
+  use-forward-headers: true
+---
+spring:
+  rabbitmq:
+    username: admin
+    password: 1234qwer
+    addresses: rabbitmq.dev.com:5672
+    virtualHost: /
+---
+eureka:
+  client:
+    serviceUrl:
+          defaultZone: @eureka.defaultZone@
+  instance:
+    hostname: ${spring.cloud.client.ipAddress}
+    prefer-ip-address: true
+---
+endpoints:
+  enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: true
+    time-to-live: 1000
+
+---
+spring:
+  cloud:
+    stream:
+      rabbit:
+        bindings:
+            consumer:
+              prefix: z
+      bindings:
+        input:
+          group: default
+
+---
+turbine:
+  stream:
+    port: 8711

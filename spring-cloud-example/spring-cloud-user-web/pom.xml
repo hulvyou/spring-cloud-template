@@ -75,7 +75,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <config.url>http://ifilmo.dev.com:8781/ifilmo-cloud-config/</config.url>
+                <config.url>http://config.dev.com:8781/spring-cloud-config-server</config.url>
                 <config.branch>master</config.branch>
                 <profiles.active>dev</profiles.active>
                 <docker.server>harbor-dev</docker.server>

@@ -1,0 +1,59 @@
+info:
+  app:
+    name: @project.artifactId@
+    version: @project.version@
+  profiles:
+    active: @profiles.active@
+---
+server:
+  port: @server.port@
+  tomcat:
+    uri-encoding: UTF-8
+  use-forward-headers: true
+---
+spring:
+  boot:
+    admin:
+      url: http://admin.dev.com:@server.port@
+      notify:
+        mail:
+         to: 343311621@qq.com
+      routes:
+        endpoints: env,metrics,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream,activiti
+      turbine:
+        clusters: default
+        location: http://turbine.dev.com:8711
+      client:
+        metadata:
+          user.name: "${security.user.name}"
+          user.password:  "${security.user.password}"
+  cloud:
+    config:
+      enabled: false
+    zuul:
+      enabled: false
+security:
+  user:
+    name: admin
+    password: @admin.password@
+  basic:
+    enabled: false
+---
+management:
+  security:
+    enabled: false
+---
+eureka:
+  client:
+    serviceUrl:
+          defaultZone: @eureka.defaultZone@
+  instance:
+    hostname: ${spring.cloud.client.ipAddress}
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+---
+spring:
+  mail:
+    host: smtp.163.com
+    username: root
+    password: 123456

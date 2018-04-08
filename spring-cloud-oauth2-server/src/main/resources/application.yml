@@ -30,7 +30,7 @@ endpoints:
 spring:
   redis:
     database: 0
-    host: 47.89.42.150
+    host: redis.dev.com
     port: 6379
     password: ifilmoredispass
 

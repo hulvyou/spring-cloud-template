@@ -6,7 +6,6 @@
     >3. Config 分布式配置
     >4. Oauth2 鉴权服务
     >5. Zipkin 分布式服务追踪
-## 项目介绍
-> 1. spring-cloud-parent是一个父pom工程 version定义为SNAPSHOT便于后续升级，里面定义了spring cloud版本，properties定义
-私服配置，常用插件配置；
-> 2. 
+    >6. turbine 监控集群下hystrix的metrics情况
+    >7. Spring Boot Admin 监控平台
+    >8. example 示例项目 

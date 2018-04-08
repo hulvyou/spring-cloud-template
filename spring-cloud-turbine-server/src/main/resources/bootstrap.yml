@@ -3,6 +3,7 @@ spring:
     name: @project.artifactId@
   profiles:
     active: @profiles.active@
+
 info:
   app:
     name: @project.artifactId@

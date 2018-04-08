@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: ifilmo-cloud-turbine-server
+  profiles:
+    active: dev
+
+info:
+  app:
+    name: ifilmo-cloud-turbine-server
+    description: ifilmo-cloud-turbine-server
+    version: 1.0.0
+
+---
+spring:
+  cloud:
+    config:
+      uri: http://zuul.dev.com:8781/spring-cloud-config-server
+      name: ifilmo-cloud-turbine-server
+      profile: dev
+      label: master
