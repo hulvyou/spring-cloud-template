@@ -10,6 +10,6 @@
     >7. redis mongodb mysql
     >8. rabbitMQ kafka
     >9. mockito 测试用例 内存数据库
-    >10 spring cloud admin 监控
-    >11 spring bus
-    >12 spring task
+    >10. spring cloud admin 监控
+    >11. spring bus
+    >12. spring task
